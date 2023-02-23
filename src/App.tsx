@@ -8,12 +8,15 @@ import {
   RouterProvider,
 } from "react-router-dom";
 
+import "./App.css";
 // pages
 import Home from "./pages/Home";
 import About from "./pages/About";
-import "./App.css";
+import Faq from "./pages/help/faq";
+import Contact from "./pages/help/contact";
 // Layouts
 import RootLayout from "./layout/RootLayout";
+import HelpLayout from "./layout/HelpLayout";
 
 function App() {
   //* This is the recommended router for all React Router web projects. It uses the DOM History API to update the URL and manage the history stack.
@@ -28,6 +31,11 @@ function App() {
       <Route element={<RootLayout/>} path="/">
         <Route index element={<Home />} />
         <Route path="about" element={<About />} />
+        <Route path="help" element={<HelpLayout/>}>
+          <Route path="faq" element={<Faq/>}/>
+          <Route path="contact" element={<Contact/>}/>
+          <Route/>
+        </Route>
       </Route>
     )
     //* Now we pass our router and pass it into a route provider component that goes inside our return
